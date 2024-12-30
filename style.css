@@ -5,6 +5,10 @@
 }
 
 body {
+    background-image: url("background_img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     height: 100vh;
     display: flex;
     align-items: center; 
@@ -13,13 +17,17 @@ body {
 
 .box {
     border: 1px solid black;
-    width: 90vmin;
-    height: 65vmin;
+    /* width: 90vmin;
+    height: 65vmin; */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
     position: relative;
+    flex-direction: column; 
+    justify-content: flex-start;
+    height: 70vh; 
+    padding: 90px;
 }
 
 .search-bar {
@@ -50,7 +58,29 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+.info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    gap: 390px;
 
+}
+
+.info ul{
+   list-style-type: none;
+   padding: 0;
+}
+.info li{
+    padding: 2px;
+    font-size: 17px;
+}
 button:hover {
     background-color: #0056b3; 
+}
+.pic {
+    margin-top: 70px; 
+    padding: 60px;
+    border: 2px solid black;
+    width: 130%; 
+    text-align: center; 
 }
