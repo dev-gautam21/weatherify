@@ -48,15 +48,9 @@ input{
 }
 
 button {
-<<<<<<< HEAD
     height: 40px; 
     padding: 0 20px;
     font-size: 14px;
-=======
-    height: 36px; 
-    padding: 11px 22px;
-    font-size: 10px;
->>>>>>> a8b7e2bb413ed04a634cb2369f50008e1d93c66b
     border: none;
     background-color: #0774e8;
     color: white;
@@ -85,7 +79,6 @@ button:hover {
     padding: 5px;
     font-size: 17px;
 }
-<<<<<<< HEAD
 
 .left-info{
     color: #e2daca;
@@ -97,15 +90,6 @@ button:hover {
     opacity: 0.7;
 }
 
-=======
-.left-info{
-    color: black;
-    opacity: 1.5;
-}
-.right-info{
-    opacity: .7;
-}
->>>>>>> a8b7e2bb413ed04a634cb2369f50008e1d93c66b
 .pic {
     margin-top: 30px; 
     padding: 20px;
