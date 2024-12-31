@@ -22,13 +22,12 @@ body {
     align-items: center;
     justify-content: flex-start;
     border-radius: 20px;
-    height: 50vh; 
+    height: 70vh; 
     padding: 40px; /* Adjusted padding */
     background-color: rgba(70, 68, 68, 0.6); 
     color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Added shadow */
 }
-
 
 #weather-form {
     display: flex; 
