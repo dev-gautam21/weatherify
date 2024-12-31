@@ -35,11 +35,19 @@ function updateWeatherInfo(data) {
     const temp = `${Math.round(data.main.temp)}°C`;
     const humidity = `${data.main.humidity}%`;
     const windSpeed = `${data.wind.speed} km/h`;
+    const description = data.weather[0].description;
+    const date = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
+    // Update Right Info Panel
     rightInfo.innerHTML = `
         <li>${name}</li>
         <li>${temp}</li>
         <li>${humidity}</li>
         <li>${windSpeed}</li>
     `;
+
+    // Update Main Display in 'pic'
+    document.getElementById('weather-desc').innerText = description;
+    document.getElementById('temp-display').innerText = temp;
+    document.getElementById('date-display').innerText = date;
 }

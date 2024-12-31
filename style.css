@@ -29,6 +29,7 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Added shadow */
 }
 
+
 #weather-form {
     display: flex; 
     align-items: center; 
@@ -46,11 +47,10 @@ input{
     outline: none;
 }
 
-
 button {
     height: 40px; 
     padding: 0 20px;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     background-color: #007BFF;
     color: white;
@@ -58,10 +58,14 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #0056b3;
+}
+
 .info {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 20px;
     gap: 60px;
     width: 100%;
 }
@@ -76,9 +80,18 @@ button {
     font-size: 17px;
 }
 
+.left-info{
+    color: #e2daca;
+    opacity: 1.5;
+}
+
+.right-info{
+    color: #c7cbc4;
+    opacity: 0.7;
+}
 
 .pic {
-    margin-top: 50px; 
+    margin-top: 30px; 
     padding: 20px;
     border: 2px solid black;
     width: 100%; 
@@ -88,4 +101,19 @@ button {
     color: black;
     background-color: rgba(255, 255, 255, 0.8); 
     border-radius: 10px; 
+}
+
+.pic h1 {
+    font-size: 48px;
+    margin: 10px 0;
+}
+
+.pic p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.pic h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
 }
