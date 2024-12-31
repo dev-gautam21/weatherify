@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("background_img.jpg");
+    background-image: url("bgii.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -98,7 +98,7 @@ button:hover {
     font-size: 18px;
     font-weight: bold;
     color: black;
-    background-color: rgba(255, 255, 255, 0.8); 
+    background-color: rgba(255, 255, 255,0.2); 
     border-radius: 10px; 
 }
 
