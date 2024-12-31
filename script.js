@@ -45,14 +45,11 @@ function updateWeatherInfo(data) {
         <li>${humidity}</li>
         <li>${windSpeed}</li>
     `;
-<<<<<<< HEAD
 
     // Update Main Display in 'pic'
     document.getElementById('weather-desc').innerText = description;
     document.getElementById('temp-display').innerText = temp;
     document.getElementById('date-display').innerText = date;
 }
-=======
-}
 
->>>>>>> a8b7e2bb413ed04a634cb2369f50008e1d93c66b
+
