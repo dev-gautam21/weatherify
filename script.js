@@ -43,3 +43,4 @@ function updateWeatherInfo(data) {
         <li>${windSpeed}</li>
     `;
 }
+
