@@ -120,3 +120,17 @@ button:hover {
 .hide{
     display: none;
 }
+
+.logo{
+    border-radius: 56px;
+    position: absolute;
+    top: 27px;
+    left: 25px;
+    height: 7.6vh;
+}
+
+.log {
+    position: absolute;
+    top :-40px;
+    left :92px;
+  }
