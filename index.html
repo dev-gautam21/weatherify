@@ -10,36 +10,39 @@
     <div>
         <div class="box">
             <form id="weather-form">
-                <input type="text" id="city" placeholder="Search Location" required "/>
+                <input type="text" id="city" placeholder="Search Location"/>
                 <button type="submit">Get Weather</button>
+                <button id="get-location">Use My Location</button>
             </form>
-           
+            
+
             <div class="info">
-               <div class="left-info">
-                <ul>
-                    <li><strong>Name</strong></li>
-                    <li><strong>Temp</strong></li>
-                    <li><strong>Humidity</strong></li>
-                    <li><strong>Wind Speed</strong></li>
-                </ul>
+                <div class="left-info">
+                    <ul>
+                        <li><strong>Name</strong></li>
+                        <li><strong>Temp</strong></li>
+                        <li><strong>Humidity</strong></li>
+                        <li><strong>Wind Speed</strong></li>
+                    </ul>
+                </div>
+                <div class="right-info">
+                    <ul>
+                        <li>City Name</li>
+                        <li>Temp</li>
+                        <li>Humidity</li>
+                        <li>Wind Speed</li>
+                    </ul>
+                </div>
             </div>
-            <div class="right-info">
-                <ul>
-                    <li>City Name</li>
-                    <li>Temp</li>
-                    <li>Humidity</li>
-                    <li>Wind Speed</li>
-                </ul>
-            </div>
-            </div>
-            <div class="pic">
+            
+            <div class="pic hide">
                 <h2>Weather Info</h2>
-                <p id="weather-desc">Clear Sky</p>
-                <h1 id="temp-display">25°C</h1>
-                <p id="date-display">Tuesday, 21 December 2024</p>
+                <p id="weather-desc"></p>
+                <h1 id="temp-display"></h1>
+                <p id="date-display"></p>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
-</html> 
+</html>

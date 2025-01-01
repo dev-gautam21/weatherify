@@ -116,3 +116,7 @@ button:hover {
     font-size: 22px;
     margin-bottom: 10px;
 }
+
+.hide{
+    display: none;
+}
