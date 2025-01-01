@@ -12,9 +12,8 @@
             <form id="weather-form">
                 <input type="text" id="city" placeholder="Search Location"/>
                 <button type="submit">Get Weather</button>
-                <button id="get-location">Use My Location</button>
+                <button type="button" id="get-location">Use My Location</button>
             </form>
-            
 
             <div class="info">
                 <div class="left-info">
@@ -34,9 +33,10 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="pic hide">
                 <h2>Weather Info</h2>
+                <img id="weather-icon" src="" alt="Weather Icon" width="100"> <!-- Weather Icon -->
                 <p id="weather-desc"></p>
                 <h1 id="temp-display"></h1>
                 <p id="date-display"></p>

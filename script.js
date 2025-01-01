@@ -2,7 +2,7 @@ const form = document.getElementById('weather-form');
 const cityInput = document.getElementById('city');
 const rightInfo = document.querySelector('.right-info ul');
 const pic = document.querySelector('.pic');
-const apiKey = '4e368bcf3d430ffb195fb7445178a9c6';  
+const apiKey = '4e368bcf3d430ffb195fb7445178a9c6';
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -25,7 +25,6 @@ form.addEventListener('submit', async (e) => {
         alert(error.message);
     }
 });
-
 
 function fetchWeatherByLocation(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
@@ -58,18 +57,21 @@ document.getElementById('get-location').addEventListener('click', () => {
 });
 
 function updateWeatherInfo(data) {
-    const name = data.name;
+    const cityName = data.name;
+    const country = data.sys.country; // Get country code (for state, we might need more data or different APIs)
     const temp = `${Math.round(data.main.temp)}°C`;
     const humidity = `${data.main.humidity}%`;
     const windSpeed = `${data.wind.speed} km/h`;
     const description = data.weather[0].description;
+    const iconCode = data.weather[0].icon;  // Weather icon code
+    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;  // Link to the weather icon
     const date = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
     pic.classList.remove('hide');
 
     // Update Right Info Panel
     rightInfo.innerHTML = `
-        <li>${name}</li>
+        <li>${cityName}, ${country}</li>
         <li>${temp}</li>
         <li>${humidity}</li>
         <li>${windSpeed}</li>
@@ -79,4 +81,9 @@ function updateWeatherInfo(data) {
     document.getElementById('weather-desc').innerText = description;
     document.getElementById('temp-display').innerText = temp;
     document.getElementById('date-display').innerText = date;
+
+    // Display weather icon
+    const weatherIcon = document.getElementById('weather-icon');
+    weatherIcon.src = iconUrl;
+    weatherIcon.alt = description;
 }
