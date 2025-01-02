@@ -2,75 +2,97 @@ const form = document.getElementById('weather-form');
 const cityInput = document.getElementById('city');
 const rightInfo = document.querySelector('.right-info ul');
 const pic = document.querySelector('.pic');
+const forecastContainer = document.getElementById('forecast-items');
 const apiKey = '4e368bcf3d430ffb195fb7445178a9c6';
+
+
+async function fetchWeather(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('City not found');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching weather:', error);
+        alert(error.message);
+    }
+}
+
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const city = cityInput.value.trim();
     if (!city) return;
 
-    try {
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-        );
-
-        if (!response.ok) {
-            throw new Error('City not found');
-        }
-
-        const data = await response.json();
-        updateWeatherInfo(data);
-    } catch (error) {
-        alert(error.message);
-    }
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    const data = await fetchWeather(url);
+    if (data) updateWeatherInfo(data);
 });
 
-function fetchWeatherByLocation(lat, lon) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.cod === 200) {
-                updateWeatherInfo(data);
-            } else {
-                alert('Unable to fetch weather data for your location');
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching weather data:', error);
-        });
-}
 
-// Event listener for the "Use My Location" button
 document.getElementById('get-location').addEventListener('click', () => {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            fetchWeatherByLocation(lat, lon);  // Fetch weather based on geolocation
-        }, (error) => {
-            alert('Unable to retrieve your location');
-        });
+        navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+                const data = await fetchWeather(url);
+                if (data) updateWeatherInfo(data);
+            },
+            () => alert('Unable to retrieve your location')
+        );
     } else {
         alert('Geolocation is not supported by your browser');
     }
 });
 
+
+function getFourDayForecast(list) {
+    const forecastsByDay = {};
+    const today = new Date().getDate(); // Get the current day of the month
+
+    list.forEach((forecast) => {
+        const date = new Date(forecast.dt_txt);
+        const day = date.getDate(); // Get the forecast day of the month
+
+        // Skip current day and group forecasts by unique day
+        if (day !== today && (!forecastsByDay[day] || forecast.dt_txt.includes("12:00:00"))) {
+            forecastsByDay[day] = {
+                temp: Math.round(forecast.main.temp),
+                day: date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' }),
+                icon: forecast.weather[0].icon,
+                description: forecast.weather[0].description,
+            };
+        }
+    });
+
+    return Object.values(forecastsByDay).slice(0, 5);
+}
+
 function updateWeatherInfo(data) {
-    const cityName = data.name;
-    const country = data.sys.country; // Get country code (for state, we might need more data or different APIs)
-    const temp = `${Math.round(data.main.temp)}°C`;
-    const humidity = `${data.main.humidity}%`;
-    const windSpeed = `${data.wind.speed} km/h`;
-    const description = data.weather[0].description;
-    const capitalizedDescription = description.charAt(0).toUpperCase()+description.slice(1);
-    const iconCode = data.weather[0].icon;  // Weather icon code
-    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;  // Link to the weather icon
-    const date = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const cityName = data.city?.name || data.name;
+    const country = data.city?.country || data.sys?.country;
+    const currentWeather = data.list ? data.list[0] : data;
+    const temp = `${Math.round(currentWeather.main.temp)}°C`;
+    const humidity = `${currentWeather.main.humidity}%`;
+    const windSpeed = `${currentWeather.wind.speed} km/h`;
+    const description = currentWeather.weather[0].description;
+    const capitalizedDescription = description.charAt(0).toUpperCase() + description.slice(1);
+    const iconCode = currentWeather.weather[0].icon;
+    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
+    const date = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+
+    
     pic.classList.remove('hide');
+    
 
-    // Update Right Info Panel
+    
     rightInfo.innerHTML = `
         <li>${cityName}, ${country}</li>
         <li>${temp}</li>
@@ -78,13 +100,27 @@ function updateWeatherInfo(data) {
         <li>${windSpeed}</li>
     `;
 
-    // Update Main Display in 'pic'
+    
     document.getElementById('weather-desc').innerText = capitalizedDescription;
     document.getElementById('temp-display').innerText = temp;
     document.getElementById('date-display').innerText = date;
 
-    // Display weather icon
+    // Update weather icon
     const weatherIcon = document.getElementById('weather-icon');
     weatherIcon.src = iconUrl;
     weatherIcon.alt = description;
+
+
+    if (data.list) {
+        const dailyForecasts = getFourDayForecast(data.list);
+
+        forecastContainer.innerHTML = dailyForecasts.map((forecast) => `
+            <div class="forecast-item">
+                <img src="http://openweathermap.org/img/wn/${forecast.icon}@2x.png" alt="${forecast.description}">
+                <p>${forecast.temp}°C</p>
+                <p>${forecast.day}</p>
+            </div>
+        `).join('');
+}
+forecastContainer.parentElement.classList.remove('hide');
 }

@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("bgii.jpg");
+    background-image: url("bg1.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -24,10 +24,10 @@ body {
     align-items: center;
     justify-content: flex-start; /* Adjust alignment */
     border-radius: 20px;
-    width: 90%; /* Adjust width for consistency */
-    max-width: 500px;
+    width: 100%; /* Adjust width for consistency */
+    max-width: 700px;
     padding: 30px;
-    background-color: rgba(70, 68, 68, 0.6);
+    background-color: rgba(20, 20, 20, 0.6);
     color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -47,9 +47,10 @@ input {
     height: 40px;
     padding-left: 10px;
     font-size: 14px;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 5px;
     outline: none;
+    /* opacity: 80%;  */
 }
 
 button {
@@ -58,7 +59,7 @@ button {
     /* padding:0 20px;  */
     font-size: 12px;
     border: none;
-    background-color: #0774e8;
+    background-color: #1866b9;
     color: white;
     border-radius: 10px;
     cursor: pointer;
@@ -96,7 +97,7 @@ button:hover {
 .right-info {
     color: #c7cbc4;
     opacity: 0.8;
-    margin-left: 80px;
+    margin-left: 150px;
 }
 
 
@@ -138,21 +139,47 @@ button:hover {
     display: none;
 }
 /* Logo Section */
-.logo {
-    border-radius: 50%;
-    position: fixed; /* Fixed for consistent positioning */
-    top: 30px;
-    left: 20px;
-    height: 60px; /* Set a consistent size */
-    width: 60px;
-}
+
+.header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+  }
+
 
 .log {
     position: fixed;
-    top: -30px;
-    left: 90px;
-    font-size: 20px;
+    top: -180px;
+    left: -180px;
     color: white;
+}
+
+#forecast-items {
+    display: flex; 
+    justify-content: space-between; 
+    gap: 10px; 
+    margin-top: 20px; 
+    overflow-x: auto; 
+}
+
+.forecast-item {
+    flex: 1; /*Ensure all items take up equal space */
+    text-align: center;
+    font-size: 13px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 2px solid black;
+    color: white;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width/height */
+    min-width: 50px; /* Set a minimum width for each item */
+}
+
+.forecast h2{
+    margin-top: 20px;
 }
 
 /* Media Queries for Responsiveness */
