@@ -9,37 +9,42 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
+    min-height: 100vh; /* Added min-height for stability */
     display: flex;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevents accidental scrollbars */
 }
+
 
 .box {
     border: 1px solid black;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Adjust alignment */
     border-radius: 20px;
-    height: 85vh; 
-    padding: 40px; /* Adjusted padding */
-    background-color: rgba(70, 68, 68, 0.6); 
+    width: 90%; /* Adjust width for consistency */
+    max-width: 500px;
+    padding: 30px;
+    background-color: rgba(70, 68, 68, 0.6);
     color: white;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Added shadow */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+
 #weather-form {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-input{
-    width: 250px; 
-    height: 40px; 
-    padding-left: 10px; 
+input {
+    width: 100%; /* Dynamic width */
+    max-width: 250px; /* Restrict max size */
+    height: 40px;
+    padding-left: 10px;
     font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -47,7 +52,7 @@ input{
 }
 
 button {
-    height: 40px; 
+    height: 40px;
     padding: 0 20px;
     font-size: 14px;
     border: none;
@@ -55,6 +60,7 @@ button {
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -62,11 +68,12 @@ button:hover {
 }
 
 .info {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    gap: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Add consistent spacing */
     width: 100%;
+    margin-top: 20px;
+    text-align: left; /*Align text to the left*/
 }
 
 .info ul {
@@ -75,62 +82,93 @@ button:hover {
 }
 
 .info li {
+    font-size: 16px;
     padding: 5px;
-    font-size: 17px;
 }
 
-.left-info{
+
+.left-info {
     color: #e2daca;
-    opacity: 1.5;
 }
 
-.right-info{
+.right-info {
     color: #c7cbc4;
-    opacity: 0.7;
+    opacity: 0.8;
+    margin-left: 80px;
 }
+
 
 .pic {
-    margin-top: 30px; 
+    margin-top: 30px;
     padding: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
     border: 2px solid black;
-    width: 100%; 
-    text-align: center; 
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    background-color: rgba(255, 255, 255,0.2); 
-    border-radius: 10px; 
+    color: white;
+}
+
+.pic img {
+    max-width: 100px; /* Limit the weather icon size */
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .pic h1 {
-    font-size: 48px;
+    font-size: 36px;
     margin: 10px 0;
 }
 
 .pic p {
-    font-size: 18px;
+    font-size: 16px;
     margin: 5px 0;
 }
 
 .pic h2 {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .hide{
     display: none;
 }
-
-.logo{
-    border-radius: 56px;
-    position: absolute;
-    top: 27px;
-    left: 25px;
-    height: 7.6vh;
+/* Logo Section */
+.logo {
+    border-radius: 50%;
+    position: fixed; /* Fixed for consistent positioning */
+    top: 30px;
+    left: 20px;
+    height: 60px; /* Set a consistent size */
+    width: 60px;
 }
 
 .log {
-    position: absolute;
-    top :-40px;
-    left :92px;
-  }
+    position: fixed;
+    top: -30px;
+    left: 90px;
+    font-size: 20px;
+    color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .box {
+        padding: 20px;
+    }
+
+    input {
+        width: 100%; /* Full width */
+    }
+
+    .info {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 10px;
+    }
+
+    .pic img {
+        max-width: 80px; /* Smaller icon for smaller screens */
+    }
+}
