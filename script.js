@@ -63,6 +63,7 @@ function updateWeatherInfo(data) {
     const humidity = `${data.main.humidity}%`;
     const windSpeed = `${data.wind.speed} km/h`;
     const description = data.weather[0].description;
+    const capitalizedDescription = description.charAt(0).toUpperCase()+description.slice(1);
     const iconCode = data.weather[0].icon;  // Weather icon code
     const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;  // Link to the weather icon
     const date = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
@@ -78,7 +79,7 @@ function updateWeatherInfo(data) {
     `;
 
     // Update Main Display in 'pic'
-    document.getElementById('weather-desc').innerText = description;
+    document.getElementById('weather-desc').innerText = capitalizedDescription;
     document.getElementById('temp-display').innerText = temp;
     document.getElementById('date-display').innerText = date;
 
