@@ -9,11 +9,13 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 100vh; /* Added min-height for stability */
+    min-height: 100vh;
+    /* Added min-height for stability */
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Prevents accidental scrollbars */
+    overflow: hidden;
+    /* Prevents accidental scrollbars */
 }
 
 
@@ -22,11 +24,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Adjust alignment */
+    justify-content: flex-start;
+    /* Adjust alignment */
     border-radius: 20px;
-    width: 100%; /* Adjust width for consistency */
+    width: 100%;
+    /* Adjust width for consistency */
     max-width: 700px;
-    padding: 30px;
+    max-height: 700px;
+    padding: 15px;
     background-color: rgba(20, 20, 20, 0.6);
     color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -36,17 +41,19 @@ body {
 #weather-form {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 10px;
     /* flex-wrap: wrap; */
 }
 
 input {
-    width: 100%; /* Dynamic width */
-    max-width: 250px; /* Restrict max size */
-    height: 40px;
-    padding-left: 10px;
-    font-size: 14px;
+    width: 100%;
+    /* Dynamic width */
+    max-width: 200px;
+    /* Restrict max size */
+    height: 30px;
+    padding-left: 8px;
+    font-size: 13px;
     border: none;
     border-radius: 5px;
     outline: none;
@@ -54,14 +61,14 @@ input {
 }
 
 button {
-    height: 40px;
-    width: 200px;
+    height: 30px;
+    width: 150px;
     /* padding:0 20px;  */
     font-size: 12px;
     border: none;
     background-color: #1866b9;
     color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -72,11 +79,14 @@ button:hover {
 
 .info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 20px; /* Add consistent spacing */
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    gap: 10px;
+    /* Add consistent spacing */
     width: 100%;
-    margin-top: 20px;
-    text-align: left; /*Align text to the left*/
+    margin-top: 10px;
+    text-align: left;
+    /*Align text to the left*/
 }
 
 .info ul {
@@ -97,32 +107,33 @@ button:hover {
 .right-info {
     color: #c7cbc4;
     opacity: 0.8;
-    margin-left: 150px;
+    margin-left: 200px;
 }
 
 
 .pic {
-    margin-top: 30px;
-    padding: 20px;
+    margin-top: 15px;
+    padding: 10px;
     width: 100%;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border-radius: 8px;
     border: 2px solid black;
     color: white;
 }
 
 .pic img {
-    max-width: 100px; /* Limit the weather icon size */
+    max-width: 70px;
+    /* Limit the weather icon size */
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
 .pic h1 {
-    font-size: 36px;
-    margin: 10px 0;
+    font-size: 26px;
+    margin: 8px 0;
 }
 
 .pic p {
@@ -135,19 +146,19 @@ button:hover {
     margin-bottom: 10px;
 }
 
-.hide{
+.hide {
     display: none;
 }
-/* Logo Section */
 
+/* Logo Section */
 .header {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-  }
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
 
 
 .log {
@@ -158,46 +169,50 @@ button:hover {
 }
 
 #forecast-items {
-    display: flex; 
-    justify-content: space-between; 
-    gap: 10px; 
-    margin-top: 20px; 
-    overflow-x: auto; 
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    overflow-x: auto;
 }
 
 .forecast-item {
-    flex: 1; /*Ensure all items take up equal space */
+    flex: 1;
+    /*Ensure all items take up equal space */
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     border: 2px solid black;
     color: white;
-    padding: 10px;
-    box-sizing: border-box; /* Include padding in width/height */
-    min-width: 50px; /* Set a minimum width for each item */
+    padding: 8px;
+    box-sizing: border-box;
+    /* Include padding in width/height */
+    min-width: 45px;
+    /* Set a minimum width for each item */
 }
 
-.forecast h2{
-    margin-top: 20px;
+.forecast h2 {
+    margin-top: 15px;
+    margin-left: 10px;
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .box {
-        padding: 20px;
+        padding: 15px; /* Further reduced padding */
     }
 
-    input {
-        width: 100%; /* Full width */
+    input, button {
+        width: 100%; /* Full width on smaller screens */
     }
 
     .info {
-        grid-template-columns: 1fr; /* Single column layout */
-        gap: 10px;
+        grid-template-columns: 1fr; 
+        gap: 8px;
     }
 
     .pic img {
-        max-width: 80px; /* Smaller icon for smaller screens */
+        max-width: 70px; 
     }
 }
