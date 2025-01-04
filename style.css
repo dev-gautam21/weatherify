@@ -187,32 +187,10 @@ button:hover {
     color: white;
     padding: 8px;
     box-sizing: border-box;
-    /* Include padding in width/height */
     min-width: 45px;
-    /* Set a minimum width for each item */
 }
 
 .forecast h2 {
     margin-top: 15px;
     margin-left: 10px;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    .box {
-        padding: 15px; /* Further reduced padding */
-    }
-
-    input, button {
-        width: 100%; /* Full width on smaller screens */
-    }
-
-    .info {
-        grid-template-columns: 1fr; 
-        gap: 8px;
-    }
-
-    .pic img {
-        max-width: 70px; 
-    }
 }
